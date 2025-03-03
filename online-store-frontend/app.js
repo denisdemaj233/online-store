@@ -38,11 +38,11 @@ function addProduct() {
     }).then(() => {
         document.getElementById("productName").value = "";
         document.getElementById("productPrice").value = "";
+        showMessage("Produkti u shtua me sukses!", "success");
         fetchProducts();
-    });
+    }).catch(() => showMessage("Gabim në shtimin e produktit!", "danger"));
 }
 
-// 🔹 Përditëson të gjithë produktin (PUT)
 function updateProduct(id) {
     const name = document.getElementById(`name-${id}`).value;
     const price = document.getElementById(`price-${id}`).value;
@@ -51,7 +51,10 @@ function updateProduct(id) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, price })
-    }).then(() => fetchProducts());
+    }).then(() => {
+        showMessage("Produkti u përditësua me sukses!", "info");
+        fetchProducts();
+    }).catch(() => showMessage("Gabim në përditësimin e produktit!", "danger"));
 }
 
 
@@ -62,13 +65,33 @@ function updatePrice(id) {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ price })
-    }).then(() => fetchProducts());
+    }).then(() => {
+        showMessage("Çmimi i produktit u përditësua!", "warning");
+        fetchProducts();
+    }).catch(() => showMessage("Gabim në përditësimin e çmimit!", "danger"));
 }
 
 
 function deleteProduct(id) {
-    fetch(`${API_URL}/${id}`, { method: "DELETE" }).then(() => fetchProducts());
+    fetch(`${API_URL}/${id}`, { method: "DELETE" })
+    .then(() => {
+        showMessage("Produkti u fshi me sukses!", "danger");
+        fetchProducts();
+    }).catch(() => showMessage("Gabim në fshirjen e produktit!", "danger"));
 }
 
+
+
+function showMessage(message, type = "success") {
+    const messageDiv = document.getElementById("message");
+    messageDiv.className = `alert alert-${type} text-center`;
+    messageDiv.textContent = message;
+    messageDiv.classList.remove("d-none");
+
+    
+    setTimeout(() => {
+        messageDiv.classList.add("d-none");
+    }, 3000);
+}
 
 fetchProducts();
