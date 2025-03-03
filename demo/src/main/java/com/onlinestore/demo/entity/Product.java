@@ -1,10 +1,11 @@
 package com.onlinestore.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "products")
@@ -18,6 +19,12 @@ public class Product {
 
     @Column(nullable = false)
     private Double price;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column(nullable = false)
+    private String imagePath;
 
     public String getName() {
         return name;
@@ -33,6 +40,30 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 
