@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Online Store</h1>
+
+ 
+        <div class="mb-4">
+            <h3>Shto Produkt</h3>
+            <input type="text" id="productName" class="form-control mb-2" placeholder="Emri i produktit">
+            <input type="number" id="productPrice" class="form-control mb-2" placeholder="Çmimi">
+            <button onclick="addProduct()" class="btn btn-success">Shto Produkt</button>
+        </div>
+
+        <h3>Lista e Produkteve</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Emri</th>
+                    <th>Çmimi</th>
+                    <th>Veprime</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
