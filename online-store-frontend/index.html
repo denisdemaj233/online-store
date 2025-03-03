@@ -11,34 +11,56 @@
     <div class="container mt-5">
         <h1 class="text-center">Online Store</h1>
 
+        <div id="message" class="alert text-center d-none"></div>
 
-     
-
-
- 
         <div class="mb-4">
             <h3>Shto Produkt</h3>
             <input type="text" id="productName" class="form-control mb-2" placeholder="Emri i produktit">
             <input type="number" id="productPrice" class="form-control mb-2" placeholder="Çmimi">
+            <input type="text" id="productDescription" class="form-control mb-2" placeholder="Përshkrimi">
+            <input type="file" id="productImage" class="form-control mb-2">
             <button onclick="addProduct()" class="btn btn-success">Shto Produkt</button>
         </div>
 
         <h3>Lista e Produkteve</h3>
-        <div id="message" class="alert text-center d-none"></div>
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Emri</th>
                     <th>Çmimi</th>
+                    <th>Përshkrimi</th>
+                    <th>Imazhi</th>
                     <th>Veprime</th>
                 </tr>
             </thead>
-            <tbody id="productList">
-            </tbody>
+            <tbody id="productList"></tbody>
         </table>
     </div>
 
+    <div class="modal fade" id="updateModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Përditëso Produktin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="updateProductId">
+                    <input type="text" id="updateProductName" class="form-control mb-2" placeholder="Emri">
+                    <input type="number" id="updateProductPrice" class="form-control mb-2" placeholder="Çmimi">
+                    <input type="text" id="updateProductDescription" class="form-control mb-2" placeholder="Përshkrimi">
+                    <input type="text" id="updateProductImage" class="form-control mb-2" placeholder="URL e Imazhit">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mbyll</button>
+                    <button type="button" class="btn btn-primary" onclick="updateProduct()">Ruaj Ndryshimet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
