@@ -1,5 +1,6 @@
 package com.onlinestore.demo.service;
 
+import aj.org.objectweb.asm.commons.Remapper;
 import com.onlinestore.demo.entity.Product;
 import com.onlinestore.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,6 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
-    }
-
-    public Product addProduct(Product product) {
-        return productRepository.save(product);
-    }
-
     public Product updateProduct(Long id, Product productDetails) {
         return productRepository.findById(id)
                 .map(product -> {
@@ -43,8 +36,17 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public void updateProductImage(Long id, String imagePath) {
+        productRepository.findById(id).ifPresent(product -> {
+            product.setImagePath(imagePath);
+            productRepository.save(product);
+        });
+    }
+
     public Product saveProduct(Product product) {
 
         return productRepository.save(product);
     }
+
+
 }
